@@ -1,0 +1,13 @@
+/* google fonts link  */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,400&display=swap");
+
+body {
+  background-color: #feeae9;
+  font-family: "Poppins", sans-serif;
+}
+.phone {
+  color: rgb(49, 49, 190);
+}
+.hut {
+  color: indigo;
+}
