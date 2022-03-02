@@ -38,7 +38,7 @@ const displayPhones = (phones) =>{
                     <div class="card-body">
                     <h3 class="card-title">Name:${phone.phone_name}</h3>
                     <p class="card-text">Brand: ${phone.brand}</p>
-                    <button onclick="phoneDetails('${phone.slug}')" href="#" class="btn btn-primary">See Details</button>
+                    <button onclick="phoneDetails('${phones.slug}')" href="#" class="btn btn-primary">See Details</button>
                     </div>
             </div>
         `
@@ -49,22 +49,30 @@ const displayPhones = (phones) =>{
 
 
 
-const phoneDetails = (data)=>{
-   
-   const phoneId = data.slug;
-    const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`
-    
+const phoneDetails =(id) =>{
+     
+    let url = `https://openapi.programming-hero.com/api/phone/${id}`
+
+    console.log(url)
     fetch(url)
+
     .then(res =>res.json())
-    .then(data => displayPhonesDetailes(data.data))
-}
+    .then(data =>displayPhonesDetailes(data.data))
+    
+    }
+    
+    
+    const displayPhonesDetailes = phone =>{
+    const allPhones = phone.data ;
+    const phoneDetails=document.getElementById('phone-details');
+    phoneDetails.textContent=''
 
-
-const displayPhonesDetailes = () =>{
     const div = document.createElement('div')
     div.classList.add('card');
     div.innerHTML=`
-    <img src="${phoneId.image}" class="card-img-top" alt="...">
+    <img src="${allPhones.image}" class="card-img-top" alt="...">
     <div class="card-body">
     `
+    phoneDetails.appendChild(div)
+
 }
